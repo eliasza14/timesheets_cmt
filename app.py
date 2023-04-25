@@ -17,23 +17,35 @@ def main():
     # Define the sidebar form
     with st.sidebar.form("my_sidebar_form"):
         st.write("## Sidebar Form")
-        d = st.date_input(
-        "When\'s your birthday",
-        datetime.date(2019, 7, 6))
-        st.write('Your birthday is:', d)
-        name = st.text_input("Enter your name:")
-        email = st.text_input("Enter your email:")
-        age = st.number_input("Enter your age:", min_value=0, max_value=120)
-        color = st.selectbox("Choose your favorite color:", ["Red", "Green", "Blue"])
+        startdate = st.date_input(
+        "Give Start Date",
+        datetime.date(2022, 7, 6))
+
+
+        enddate = st.date_input(
+        "Give End Date",
+        datetime.date(2022, 7, 6))
+
+        st.write('Your birthday is:', enddate)
+
+
+        # name = st.text_input("Enter your name:")
+        # email = st.text_input("Enter your email:")
+        # age = st.number_input("Enter your age:", min_value=0, max_value=120)
+        # color = st.selectbox("Choose your favorite color:", ["Red", "Green", "Blue"])
         submit_button = st.form_submit_button(label="Submit")
 
     # Display the results
     if submit_button:
         st.write("## Results")
-        st.write(f"Name: {name}")
-        st.write(f"Email: {email}")
-        st.write(f"Age: {age}")
-        st.write(f"Favorite color: {color}")
+        st.write('Your birthday is:', startdate)
+        st.write('Your birthday is:', enddate)
+
+
+        # st.write(f"Name: {name}")
+        # st.write(f"Email: {email}")
+        # st.write(f"Age: {age}")
+        # st.write(f"Favorite color: {color}")
 
 if __name__ == '__main__':
     main()
