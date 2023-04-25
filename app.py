@@ -37,4 +37,4 @@ rows = run_query(sql)
 
 st.write(rows)
 for row in rows:
-    st.write(f"{row[7]} is :{row[18]}:")
+    st.write(f"{row[18]} is :{row[18]}:")
