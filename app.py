@@ -9,7 +9,7 @@ from streamlit import session_state
 
 def update():
     st.session_state.submitted = True
-
+    
 
 def main():
     st.set_page_config(page_title="Sidebar Form Example")
@@ -40,19 +40,22 @@ def main():
         # age = st.number_input("Enter your age:", min_value=0, max_value=120)
         # color = st.selectbox("Choose your favorite color:", ["Red", "Green", "Blue"])
         #submit_button = st.form_submit_button(label="Submit",on_click=update)
-        sumbited_button=st.form_submit_button(label="Submit",on_click=update)
+        st.form_submit_button(label="Submit",on_click=update)
     # Display the results
 
 
-    if sumbited_button.session_state.submitted:
+    if st.session_state.submitted:
         st.write("## Results")
         st.write('Your birthday is:', startdate)
         st.write('Your birthday is:', enddate)
         with st.form("Form Filter"):
             name = st.text_input("Enter your name:")
             email = st.text_input("Enter your email:")
-            submit_button2   = st.form_submit_button(label="Submit2")
-    
+            submit_button2   = st.form_submit_button(label="Submit2",on_click=update)
+        if st.session_state.submitted:
+            st.write("## Results")
+            st.write('Your birthday is:', startdate)
+            st.write('Your birthday is:', enddate)
         # if st.session_state.submitted:
 
         # st.write(f"Name: {name}")
