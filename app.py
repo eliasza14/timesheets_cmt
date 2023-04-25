@@ -44,3 +44,9 @@ st.write(df2)
 # st.write(rows)
 # for row in rows:
 #     st.write(f"{row[18]} is :{row[18]}:")
+
+option = st.selectbox(
+    'How would you like to be contacted?',
+    (df2['alias'].to_list()))
+
+st.write('You selected:', option)
