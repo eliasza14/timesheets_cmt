@@ -56,6 +56,8 @@ def main():
             st.write("## Results")
             st.write('Your birthday is:', startdate)
             st.write('Your birthday is:', enddate)
+            st.write('name',name)
+            st.write('email',email)
         # if st.session_state.submitted:
 
         # st.write(f"Name: {name}")
