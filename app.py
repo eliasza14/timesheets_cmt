@@ -51,8 +51,9 @@ st.write(df2)
 #     st.write(f"{row[18]} is :{row[18]}:")
 
 st.write("TESTTTTTTTTw22222")
-names=['']
-names.append(df2['alias'].unique().tolist())
+
+listnames=(df2['alias'].unique().tolist())
+names=['',listnames]
 st.write(names)
 
 name_choice = st.sidebar.selectbox('Select  name:',names)
