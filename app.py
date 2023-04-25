@@ -50,7 +50,7 @@ st.write(df2)
 # for row in rows:
 #     st.write(f"{row[18]} is :{row[18]}:")
 
-st.write("TESTTTTTTTT")
+st.write("TESTTTTTTTTw22222")
 names=['']
 names.append(df2['alias'].unique().tolist())
 
