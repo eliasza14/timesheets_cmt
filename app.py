@@ -16,5 +16,11 @@ cursor=conn.cursor()
 cursor.execute("USE mproj_db")
 cursor.close()
 
-df1=pd.read_sql("SELECT * FROM kimai2_users", conn)
+sql = """SELECT kimai2_timesheet.*,kimai2_users.alias,kimai2_projects.name as project_name,kimai2_activities.name as activity_name,kimai2_timesheet_tags.name as tag_name FROM kimai2_timesheet 
+INNER JOIN kimai2_users ON kimai2_timesheet.user=kimai2_users.id
+INNER JOIN kimai2_projects ON kimai2_timesheet.project_id=kimai2_projects.id
+INNER JOIN kimai2_activities ON kimai2_timesheet.activity_id=kimai2_activities.id
+INNER JOIN (SELECT * FROM kimai2_tags INNER JOIN kimai2_timesheet_tags ON kimai2_tags.id=kimai2_timesheet_tags.tag_id ) AS kimai2_timesheet_tags ON kimai2_timesheet.id=kimai2_timesheet_tags.timesheet_id
+"""
+df1=pd.read_sql(sql, conn)
 st.write(df1)
