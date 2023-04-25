@@ -27,14 +27,17 @@ INNER JOIN (SELECT * FROM kimai2_tags INNER JOIN kimai2_timesheet_tags ON kimai2
 # st.write(df1)
 
 
-@st.cache_data(ttl=600)
-def run_query(query):
-    with conn.cursor() as cur:
-        cur.execute(query)
-        return cur.fetchall()
+# @st.cache_data(ttl=600)
+# def run_query(query):
+#     with conn.cursor() as cur:
+#         cur.execute(query)
+#         return cur.fetchall()
 
-rows = run_query(sql)
+# rows = run_query(sql)
 
-st.write(rows)
-for row in rows:
-    st.write(f"{row[18]} is :{row[18]}:")
+
+df1=pd.read_sql(sql, conn)
+st.write(df1)
+# st.write(rows)
+# for row in rows:
+#     st.write(f"{row[18]} is :{row[18]}:")
