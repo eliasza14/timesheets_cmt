@@ -53,7 +53,7 @@ st.write(df2)
 st.write("TESTTTTTTTTw22222")
 names=['']
 names.append(df2['alias'].unique().tolist())
-
+st.write(names)
 
 name_choice = st.sidebar.selectbox('Select  name:',names)
 dfbyname=df2[df2['alias']==name_choice]
