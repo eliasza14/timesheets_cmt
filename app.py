@@ -58,11 +58,11 @@ name_choice = st.sidebar.selectbox('Select  name:', names)
 dfbyname=df2[df2['alias']==name_choice]
 st.write(dfbyname)
 
-projects=dfbyname['alias'].unique().tolist()
+projects=dfbyname['project_name'].unique().tolist()
 
 
 project_choice = st.sidebar.selectbox('Select  project:', projects)
-dfbyproject=dfbyname[dfbyname['alias']==project_choice]
+dfbyproject=dfbyname[dfbyname['project_name']==project_choice]
 st.write(dfbyproject)
 # year_choice = st.sidebar.selectbox('', years)
 # model_choice = st.sidebar.selectbox('', models)
