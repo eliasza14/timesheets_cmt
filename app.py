@@ -12,6 +12,7 @@ def init_connection():
 
 conn = init_connection()
 
+st.write("VERSION 1")
 cursor=conn.cursor()
 cursor.execute("USE mproj_db")
 cursor.close()
