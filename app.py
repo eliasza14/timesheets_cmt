@@ -49,12 +49,21 @@ st.write(df2)
 # st.write(rows)
 # for row in rows:
 #     st.write(f"{row[18]} is :{row[18]}:")
+
+st.write("TESTTTTTTTT")
 names=df2['alias'].unique().tolist()
 
 
-name_choice = st.sidebar.selectbox('Select your vehicle:', names)
+name_choice = st.sidebar.selectbox('Select  name:', names)
 dfbyname=df2[df2['alias']==name_choice]
 st.write(dfbyname)
+
+projects=dfbyname['alias'].unique().tolist()
+
+
+project_choice = st.sidebar.selectbox('Select  project:', projects)
+dfbyproject=dfbyname[dfbyname['alias']==project_choice]
+st.write(dfbyproject)
 # year_choice = st.sidebar.selectbox('', years)
 # model_choice = st.sidebar.selectbox('', models)
 # engine_choice = st.sidebar.selectbox('', engines)
