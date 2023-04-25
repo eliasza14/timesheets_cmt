@@ -37,8 +37,8 @@ def run_query(query):
 rows,columnames = run_query(sql)
 
 st.write(columnames)
-
-df1=pd.DataFrame(rows,column=columnames)
+st.write(rows)
+df1=pd.DataFrame(rows,columns=columnames)
 
 
 
