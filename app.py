@@ -28,7 +28,7 @@ def main():
         INNER JOIN kimai2_activities ON kimai2_timesheet.activity_id=kimai2_activities.id
         INNER JOIN (SELECT * FROM kimai2_tags INNER JOIN kimai2_timesheet_tags ON kimai2_tags.id=kimai2_timesheet_tags.tag_id ) AS kimai2_timesheet_tags ON kimai2_timesheet.id=kimai2_timesheet_tags.timesheet_id
         """
-    sql2="WHERE kimai2_timesheet.start_time BETWEEN #2023-04-28# AND #2023-05-05"
+    sql2="WHERE start_time BETWEEN '2023-04-28' AND '2023-05-05'"
 
     
     rows,columnames = run_query(conn,sql+sql2)
