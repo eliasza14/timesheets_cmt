@@ -41,8 +41,8 @@ def main():
         #submit_button = st.form_submit_button(label="Submit",on_click=update)
         st.form_submit_button(label="Submit",on_click=update)
     # Display the results
-    if 'submitted' not in st.session_state:
-        st.session_state.submitted = False
+    # if 'submitted' not in st.session_state:
+    #     st.session_state.submitted = False
 
     if st.session_state.submitted:
         st.write("## Results")
