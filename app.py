@@ -28,6 +28,12 @@ def main():
 
         st.write('Your birthday is:', enddate)
 
+        with st.sidebar.form("Form Filter"):
+            name = st.text_input("Enter your name:")
+            email = st.text_input("Enter your email:")
+            submit_button2   = st.form_submit_button(label="Submit2")
+
+
 
         # name = st.text_input("Enter your name:")
         # email = st.text_input("Enter your email:")
