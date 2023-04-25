@@ -13,7 +13,8 @@ def update():
 
 def main():
     st.set_page_config(page_title="Sidebar Form Example")
-
+    if 'submitted' not in st.session_state:
+        st.session_state.submitted = False
 
 
     # Define the sidebar form
@@ -41,8 +42,7 @@ def main():
         #submit_button = st.form_submit_button(label="Submit",on_click=update)
         st.form_submit_button(label="Submit",on_click=update)
     # Display the results
-    # if 'submitted' not in st.session_state:
-    #     st.session_state.submitted = False
+
 
     if st.session_state.submitted:
         st.write("## Results")
@@ -52,7 +52,7 @@ def main():
             name = st.text_input("Enter your name:")
             email = st.text_input("Enter your email:")
             submit_button2   = st.form_submit_button(label="Submit2")
-
+    
 
         # st.write(f"Name: {name}")
         # st.write(f"Email: {email}")
