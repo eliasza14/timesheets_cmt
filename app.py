@@ -5,13 +5,23 @@ import datetime
 from streamlit import session_state
 
 
-
+def init_connection():
+    return mysql.connector.connect(**st.secrets["mysql"])
 
 def update():
     st.session_state.submitted = True
     
 
 def main():
+
+
+    conn = init_connection()
+    sql = """SELECT kimai2_timesheet.*,kimai2_users.alias,kimai2_projects.name as project_name,kimai2_activities.name as activity_name,kimai2_timesheet_tags.name as tag_name FROM kimai2_timesheet 
+        INNER JOIN kimai2_users ON kimai2_timesheet.user=kimai2_users.id
+        INNER JOIN kimai2_projects ON kimai2_timesheet.project_id=kimai2_projects.id
+        INNER JOIN kimai2_activities ON kimai2_timesheet.activity_id=kimai2_activities.id
+        INNER JOIN (SELECT * FROM kimai2_tags INNER JOIN kimai2_timesheet_tags ON kimai2_tags.id=kimai2_timesheet_tags.tag_id ) AS kimai2_timesheet_tags ON kimai2_timesheet.id=kimai2_timesheet_tags.timesheet_id
+        """
     st.set_page_config(page_title="Sidebar Form Example")
     if 'submitted' not in st.session_state:
         st.session_state.submitted = False
@@ -82,9 +92,9 @@ if __name__ == '__main__':
 
 # st.write("CMT Timesheets Extended")
 
-# # Initialize connection.
-# # Uses st.cache_resource to only run once.
-# # @st.cache_resource
+# Initialize connection.
+# Uses st.cache_resource to only run once.
+# @st.cache_resource
 # def init_connection():
 #     return mysql.connector.connect(**st.secrets["mysql"])
 
