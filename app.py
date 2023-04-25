@@ -8,6 +8,12 @@ from streamlit import session_state
 def init_connection():
     return mysql.connector.connect(**st.secrets["mysql"])
 
+def run_query(conn,query):
+    with conn.cursor() as cur:
+        cur.execute(query)
+        columnsnames=cur.column_names
+        return cur.fetchall(),columnsnames
+    
 def update():
     st.session_state.submitted = True
     
@@ -22,6 +28,12 @@ def main():
         INNER JOIN kimai2_activities ON kimai2_timesheet.activity_id=kimai2_activities.id
         INNER JOIN (SELECT * FROM kimai2_tags INNER JOIN kimai2_timesheet_tags ON kimai2_tags.id=kimai2_timesheet_tags.tag_id ) AS kimai2_timesheet_tags ON kimai2_timesheet.id=kimai2_timesheet_tags.timesheet_id
         """
+    
+    rows,columnames = run_query(conn,sql)
+
+    st.write(columnames)
+    df1=pd.DataFrame(rows,columns=columnames)
+
     st.set_page_config(page_title="Sidebar Form Example")
     if 'submitted' not in st.session_state:
         st.session_state.submitted = False
@@ -56,6 +68,7 @@ def main():
 
     if st.session_state.submitted:
         st.write("## Results")
+        st.write(df1)
         st.write('Your birthday is:', startdate)
         st.write('Your birthday is:', enddate)
         with st.form("Form Filter"):
