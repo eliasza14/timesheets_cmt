@@ -2,11 +2,13 @@ import streamlit as st
 import pandas as pd
 import mysql.connector
 import datetime
+from streamlit import session_state
 
 
 
 
-
+def update():
+    st.session_state.submitted = True
 
 
 def main():
@@ -36,10 +38,13 @@ def main():
         # email = st.text_input("Enter your email:")
         # age = st.number_input("Enter your age:", min_value=0, max_value=120)
         # color = st.selectbox("Choose your favorite color:", ["Red", "Green", "Blue"])
-        submit_button = st.form_submit_button(label="Submit")
-
+        #submit_button = st.form_submit_button(label="Submit",on_click=update)
+        st.form_submit_button(label="Submit",on_click=update)
     # Display the results
-    if submit_button:
+    if 'submitted' not in st.session_state:
+        st.session_state.submitted = False
+
+    if st.session_state.submitted:
         st.write("## Results")
         st.write('Your birthday is:', startdate)
         st.write('Your birthday is:', enddate)
