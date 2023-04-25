@@ -31,9 +31,9 @@ def main():
     
     rows,columnames = run_query(conn,sql)
 
-    st.write(columnames)
+    # st.write(columnames)
     df1=pd.DataFrame(rows,columns=columnames)
-
+    st.write(df1)
     st.set_page_config(page_title="Sidebar Form Example")
     if 'submitted' not in st.session_state:
         st.session_state.submitted = False
@@ -68,7 +68,7 @@ def main():
 
     if st.session_state.submitted:
         st.write("## Results")
-        st.write(df1)
+       
         st.write('Your birthday is:', startdate)
         st.write('Your birthday is:', enddate)
         with st.form("Form Filter"):
