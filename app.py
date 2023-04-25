@@ -11,6 +11,10 @@ def init_connection():
     return mysql.connector.connect(**st.secrets["mysql"])
 
 conn = init_connection()
-st.write(conn)
 
+cursor=conn.cursor()
+cursor.execute("USE mproj_db")
+cursor.close()
 
+df1=pd.read_sql("SELECT * FROM kimai2_users", conn)
+st.write(df1)
