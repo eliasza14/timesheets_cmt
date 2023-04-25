@@ -1,6 +1,7 @@
 import streamlit as st
 import pandas as pd
 import mysql.connector
+import datetime
 
 
 
@@ -11,9 +12,15 @@ import mysql.connector
 def main():
     st.set_page_config(page_title="Sidebar Form Example")
 
+
+
     # Define the sidebar form
     with st.sidebar.form("my_sidebar_form"):
         st.write("## Sidebar Form")
+        d = st.date_input(
+        "When\'s your birthday",
+        datetime.date(2019, 7, 6))
+        st.write('Your birthday is:', d)
         name = st.text_input("Enter your name:")
         email = st.text_input("Enter your email:")
         age = st.number_input("Enter your age:", min_value=0, max_value=120)
