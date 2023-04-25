@@ -47,6 +47,8 @@ st.write(df2)
 
 option = st.selectbox(
     'How would you like to be contacted?',
-    (df2['alias'].to_list()))
+    (df2['alias'].unique().tolist()))
 
 st.write('You selected:', option)
+
+st.write(df2[df2['alias']==option])
