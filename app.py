@@ -52,7 +52,7 @@ st.write(df2)
 
 st.write("TESTTTTTTTTw22222")
 
-listnames=(df2['alias'].unique().tolist())
+listnames=df2['alias'].unique().tolist()
 names=['',listnames]
 st.write(names)
 
