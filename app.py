@@ -27,7 +27,7 @@ INNER JOIN (SELECT * FROM kimai2_tags INNER JOIN kimai2_timesheet_tags ON kimai2
 # st.write(df1)
 
 
-@st.cache_data(ttl=600)
+# @st.cache_data(ttl=600)
 def run_query(query):
     with conn.cursor() as cur:
         cur.execute(query)
@@ -37,7 +37,6 @@ def run_query(query):
 rows,columnames = run_query(sql)
 
 st.write(columnames)
-st.write(rows)
 df1=pd.DataFrame(rows,columns=columnames)
 
 
