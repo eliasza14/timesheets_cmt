@@ -15,7 +15,7 @@ st.write("CMT Timesheets Extended")
 
 
 
-cnx=mysql.connector.connect(host='5.77.39.26',user='mproj_user2',password='xVHHCNU1UR}v')
+cnx=mysql.connector.connect(host='5.77.39.26',port=3306,user='mproj_user2',password='xVHHCNU1UR}v')
 
 if cnx.is_connected():
     print('Successfully connected')
