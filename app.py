@@ -28,7 +28,7 @@ def main():
         INNER JOIN kimai2_activities ON kimai2_timesheet.activity_id=kimai2_activities.id
         INNER JOIN (SELECT * FROM kimai2_tags INNER JOIN kimai2_timesheet_tags ON kimai2_tags.id=kimai2_timesheet_tags.tag_id ) AS kimai2_timesheet_tags ON kimai2_timesheet.id=kimai2_timesheet_tags.timesheet_id
         """
-    sql2="WHERE start_time BETWEEN '2023-04-28' AND '2023-04-29'"
+    sql2="WHERE start_time BETWEEN"+"'"+str(startdate)+"'"+"AND"+"'"+ str(enddate)+"'"+""
 
     
     rows,columnames = run_query(conn,sql+sql2)
@@ -73,6 +73,7 @@ def main():
         st.write("All Data from Query",df1)
         st.write('Your birthday is:', startdate)
         st.write('Your birthday is:', enddate)
+        
         with st.form("Form Filter"):
             name = st.text_input("Enter your name:")
             email = st.text_input("Enter your email:")
