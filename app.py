@@ -22,19 +22,7 @@ def main():
 
 
     conn = init_connection()
-    sql = """SELECT kimai2_timesheet.*,kimai2_users.alias,kimai2_projects.name as project_name,kimai2_activities.name as activity_name,kimai2_timesheet_tags.name as tag_name FROM kimai2_timesheet 
-        INNER JOIN kimai2_users ON kimai2_timesheet.user=kimai2_users.id
-        INNER JOIN kimai2_projects ON kimai2_timesheet.project_id=kimai2_projects.id
-        INNER JOIN kimai2_activities ON kimai2_timesheet.activity_id=kimai2_activities.id
-        INNER JOIN (SELECT * FROM kimai2_tags INNER JOIN kimai2_timesheet_tags ON kimai2_tags.id=kimai2_timesheet_tags.tag_id ) AS kimai2_timesheet_tags ON kimai2_timesheet.id=kimai2_timesheet_tags.timesheet_id
-        """
-    sql2="WHERE start_time BETWEEN"+"'"+str(startdate)+"'"+"AND"+"'"+ str(enddate)+"'"+""
-
-    
-    rows,columnames = run_query(conn,sql+sql2)
-
-    # st.write(columnames)
-    df1=pd.DataFrame(rows,columns=columnames)
+   
   
     st.set_page_config(page_title="Sidebar Form Example")
     if 'submitted' not in st.session_state:
@@ -70,6 +58,19 @@ def main():
 
     if st.session_state.submitted:
         st.write("## Results")
+        sql = """SELECT kimai2_timesheet.*,kimai2_users.alias,kimai2_projects.name as project_name,kimai2_activities.name as activity_name,kimai2_timesheet_tags.name as tag_name FROM kimai2_timesheet 
+        INNER JOIN kimai2_users ON kimai2_timesheet.user=kimai2_users.id
+        INNER JOIN kimai2_projects ON kimai2_timesheet.project_id=kimai2_projects.id
+        INNER JOIN kimai2_activities ON kimai2_timesheet.activity_id=kimai2_activities.id
+        INNER JOIN (SELECT * FROM kimai2_tags INNER JOIN kimai2_timesheet_tags ON kimai2_tags.id=kimai2_timesheet_tags.tag_id ) AS kimai2_timesheet_tags ON kimai2_timesheet.id=kimai2_timesheet_tags.timesheet_id
+        """
+        sql2="WHERE start_time BETWEEN"+"'"+str(startdate)+"'"+"AND"+"'"+ str(enddate)+"'"+""
+
+    
+        rows,columnames = run_query(conn,sql+sql2)
+
+    # st.write(columnames)
+        df1=pd.DataFrame(rows,columns=columnames)
         st.write("All Data from Query",df1)
         st.write('Your birthday is:', startdate)
         st.write('Your birthday is:', enddate)
