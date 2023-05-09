@@ -88,10 +88,17 @@ def main():
         df1=df1[df1.activity_name.isin(choices)]
 
         regular_search_term =df1.alias.unique().tolist()
-        choices2 = st.multiselect(" ",regular_search_term)
-        
-        df1=df1[df1.alias.isin(choices2)]
-        st.write(df1)
+        choices2 = st.multiselect(" ",regular_search_term + ['All'])
+        if 'All' not in choices2:
+
+            df1=df1[df1.alias.isin(choices2)]
+            st.write(df1)
+
+        else:
+            st.write(df1)
+
+
+        # st.write(df1)
 
         # with st.form("Form Filter"):
         #     name = st.text_input("Enter your name:")
