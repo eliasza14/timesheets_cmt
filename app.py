@@ -76,22 +76,22 @@ def main():
         rows,columnames = run_query(conn,sql+sql2)
 
     # st.write(columnames)
-        df1=pd.DataFrame(rows,columns=columnames)
-        st.write("All Data from Query",df1)
+        dfdata=pd.DataFrame(rows,columns=columnames)
+        st.write("All Data from Query",dfdata)
         st.write('Your birthday is:', startdate)
         st.write('Your birthday is:', enddate)
         
-
-        st.write(df1)
+        df1=dfdata.copy()
+        # st.write(df1)
         regular_search_term =df1.project_name.unique().tolist()
 
         choices = st.multiselect(" ",regular_search_term)
-        df2=df1[df1.project_name.isin(choices)]
-        regular_search_term =df2.alias.unique().tolist()
+        df1=df1[df1.project_name.isin(choices)]
+        regular_search_term =df1.alias.unique().tolist()
 
         choices2 = st.multiselect(" ",regular_search_term)
-        df3=df2[df2.alias.isin(choices2)]
-        st.write(df3)
+        df1=df1[df1.alias.isin(choices2)]
+        st.write(df1)
 
         with st.form("Form Filter"):
             name = st.text_input("Enter your name:")
