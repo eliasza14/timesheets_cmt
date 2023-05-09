@@ -66,7 +66,7 @@ def main():
         INNER JOIN kimai2_projects ON kimai2_timesheet.project_id=kimai2_projects.id
         INNER JOIN kimai2_activities ON kimai2_timesheet.activity_id=kimai2_activities.id
         """
-        sql2="WHERE CONVERT(VARCHAR(10), start_time, 111) >="+"'"+str(startdate)+"'"+"AND CONVERT(VARCHAR(10), start_time, 111) <="+"'"+ str(enddate)+"'"+""
+        sql2="WHERE DATE(start_time) >="+"'"+str(startdate)+"'"+"AND DATE(start_time) <="+"'"+ str(enddate)+"'"+""
 
     
         rows,columnames = run_query(conn,sql+sql2)
