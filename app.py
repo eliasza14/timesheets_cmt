@@ -5,6 +5,8 @@ import datetime
 from streamlit import session_state
 
 
+from datetime import timedelta
+
 def init_connection():
     return mysql.connector.connect(**st.secrets["mysql"])
 
@@ -34,12 +36,14 @@ def main():
         st.write("## date range Form")
         startdate = st.date_input(
         "Give Start Date",
-        datetime.date(2022, 7, 6))
+        datetime.date.today())
+
+
 
 
         enddate = st.date_input(
         "Give End Date",
-        datetime.date(2022, 7, 6))
+        datetime.datetime.now() + datetime.timedelta(days=1))
 
         st.write('Your birthday is:', enddate)
 
