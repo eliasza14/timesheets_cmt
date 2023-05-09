@@ -83,12 +83,11 @@ def main():
         
         df1=dfdata.copy()
         # st.write(df1)
-        regular_search_term =df1.project_name.unique().tolist()
-
+        regular_search_term =df1.activity_name.unique().tolist()
         choices = st.multiselect(" ",regular_search_term)
-        df1=df1[df1.project_name.isin(choices)]
-        regular_search_term =df1.alias.unique().tolist()
+        df1=df1[df1.activity_name.isin(choices)]
 
+        regular_search_term =df1.alias.unique().tolist()
         choices2 = st.multiselect(" ",regular_search_term)
         df1=df1[df1.alias.isin(choices2)]
         st.write(df1)
