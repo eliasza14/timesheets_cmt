@@ -63,7 +63,7 @@ def main():
         INNER JOIN kimai2_projects ON kimai2_timesheet.project_id=kimai2_projects.id
         INNER JOIN kimai2_activities ON kimai2_timesheet.activity_id=kimai2_activities.id
         """
-        sql2="WHERE start_time BETWEEN"+"'"+str(startdate)+"'"+"AND"+"'"+ str(enddate)+"'"+""
+        sql2="WHERE start_time >="+"'"+str(startdate)+"'"+"AND <="+"'"+ str(enddate)+"'"+""
 
     
         rows,columnames = run_query(conn,sql+sql2)
