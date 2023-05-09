@@ -57,6 +57,9 @@ def main():
 
 
     if st.session_state.submitted:
+        st.write("Given startdate and endate",startdate)
+        st.write("Given startdate and endate",enddate)
+
         st.write("## Results")
         sql = """SELECT kimai2_timesheet.*,kimai2_users.alias,kimai2_projects.name as project_name,kimai2_activities.name as activity_name FROM kimai2_timesheet 
         INNER JOIN kimai2_users ON kimai2_timesheet.user=kimai2_users.id
