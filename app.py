@@ -81,11 +81,19 @@ def main():
         st.write('Your birthday is:', startdate)
         st.write('Your birthday is:', enddate)
         
+
+        st.write(df1)
+        regular_search_term =df1.project_name.unique().tolist()
+        choices = st.multiselect(" ",regular_search_term)
+        st.write(df1[df1.project_name.isin(choices)])
+
+
         with st.form("Form Filter"):
             name = st.text_input("Enter your name:")
             email = st.text_input("Enter your email:")
             submit_button2   = st.form_submit_button(label="Submit2")
         if submit_button2:
+
             st.write("## Results")
             st.write('Your birthday is:', startdate)
             st.write('Your birthday is:', enddate)
