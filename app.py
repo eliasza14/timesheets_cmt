@@ -97,6 +97,8 @@ def main():
         else:
             st.write(df1)
 
+        st.write(df1.groupby(['alias'])['activity_name'].count())
+        
 
         # st.write(df1)
 
