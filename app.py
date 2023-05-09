@@ -89,20 +89,21 @@ def main():
 
         regular_search_term =df1.alias.unique().tolist()
         choices2 = st.multiselect(" ",regular_search_term)
+        
         df1=df1[df1.alias.isin(choices2)]
         st.write(df1)
 
-        with st.form("Form Filter"):
-            name = st.text_input("Enter your name:")
-            email = st.text_input("Enter your email:")
-            submit_button2   = st.form_submit_button(label="Submit2")
-        if submit_button2:
+        # with st.form("Form Filter"):
+        #     name = st.text_input("Enter your name:")
+        #     email = st.text_input("Enter your email:")
+        #     submit_button2   = st.form_submit_button(label="Submit2")
+        # if submit_button2:
 
-            st.write("## Results")
-            st.write('Your birthday is:', startdate)
-            st.write('Your birthday is:', enddate)
-            st.write('name',name)
-            st.write('email',email)
+        #     st.write("## Results")
+        #     st.write('Your birthday is:', startdate)
+        #     st.write('Your birthday is:', enddate)
+        #     st.write('name',name)
+        #     st.write('email',email)
         # if st.session_state.submitted:
 
         # st.write(f"Name: {name}")
