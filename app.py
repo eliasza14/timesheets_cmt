@@ -31,7 +31,7 @@ def main():
 
     # Define the sidebar form
     with st.sidebar.form("my_sidebar_form"):
-        st.write("## Sidebar Form")
+        st.write("## date range Form")
         startdate = st.date_input(
         "Give Start Date",
         datetime.date(2022, 7, 6))
