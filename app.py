@@ -84,9 +84,14 @@ def main():
 
         st.write(df1)
         regular_search_term =df1.project_name.unique().tolist()
-        choices = st.multiselect(" ",regular_search_term)
-        st.write(df1[df1.project_name.isin(choices)])
 
+        choices = st.multiselect(" ",regular_search_term)
+        df2=df1[df1.project_name.isin(choices)]
+        regular_search_term =df2.alias.unique().tolist()
+
+        choices2 = st.multiselect(" ",regular_search_term)
+        df3=df2[df2.alias.isin(choices2)]
+        st.write(df3)
 
         with st.form("Form Filter"):
             name = st.text_input("Enter your name:")
