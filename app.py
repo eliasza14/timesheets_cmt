@@ -112,11 +112,27 @@ def main():
         options = optionlist
 
         # Display the dropdown menu
-        selected_option = st.selectbox('Choose an option', options)
+        selected_option = st.selectbox('Choose a user', options)
 
         # Show the selected option
         st.write('Selected option:', selected_option)
         df1 = df1[df1['alias'] == selected_option]
+
+        st.write("## Show comment of a user per specific project:")
+        optionlist =df1.project_name.unique().tolist()
+        options = optionlist
+
+        # Display the dropdown menu
+        selected_option = st.selectbox('Choose a project name', options)
+        df1 = df1[df1['project_name'] == selected_option]
+
+        # Show the selected option
+        st.write('Selected option:', selected_option)
+        # df1 = df1[df1['alias'] == selected_option]
+
+
+
+        
         st.text(df1["description"])
 
         st.write("## Zoom In on Specific Comment:")
