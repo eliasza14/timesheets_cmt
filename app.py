@@ -112,7 +112,18 @@ def main():
         st.write('Selected option:', selected_option)
         df1 = df1[df1['alias'] == selected_option]
         st.text(df1["description"])
+
         st.write("## Zoom In on Specific Comment:")
+        optionlistcomment =df1.description.unique().tolist()
+        optionscomment = optionlistcomment
+
+        # Display the dropdown menu
+        selected_option = st.selectbox('Choose an option', optionscomment)
+
+        # Show the selected option
+        st.write('Selected option:', selected_option)
+        df1 = df1[df1['description'] == selected_option]
+        st.text(df1["description"])
 
         # st.write(df1)
 
