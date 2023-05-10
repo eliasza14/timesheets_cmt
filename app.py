@@ -112,6 +112,7 @@ def main():
         st.write('Selected option:', selected_option)
         df1 = df1[df1['alias'] == selected_option]
         st.text(df1["description"])
+        st.write("## Zoom In on Specific Comment:")
 
         # st.write(df1)
 
