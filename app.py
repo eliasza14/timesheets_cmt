@@ -111,11 +111,7 @@ def main():
         # Show the selected option
         st.write('Selected option:', selected_option)
         df1 = df1[df1['alias'] == selected_option]
-
-
-
-        for index, row in df1.iterrows():
-            st.text(df1["description"])
+        st.text(df1["description"])
 
         # st.write(df1)
 
