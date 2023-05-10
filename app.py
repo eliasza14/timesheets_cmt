@@ -101,9 +101,21 @@ def main():
         st.write(df1.groupby(['alias'])['activity_name'].count())
     
         st.write("## Show comment of a user in detail:")
+        # List of options for the dropdown menu
+        optionlist =df1.alias.unique().tolist()
+        options = optionlist
+
+        # Display the dropdown menu
+        selected_option = st.selectbox('Choose an option', options)
+
+        # Show the selected option
+        st.write('Selected option:', selected_option)
+        df1 = df1[df1['alias'] == selected_option]
+
+
 
         for index, row in df1.iterrows():
-            st.text(row["description"])
+            st.text(df1["description"])
 
         # st.write(df1)
 
