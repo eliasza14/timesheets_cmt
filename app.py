@@ -96,9 +96,10 @@ def main():
 
         else:
             st.write(df1)
-
+        #Counts Weekly reports per user activity
         st.write(df1.groupby(['alias'])['activity_name'].count())
-        
+        for index, row in df1.iterrows():
+            st.text(row["description"])
 
         # st.write(df1)
 
