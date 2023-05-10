@@ -125,6 +125,7 @@ def main():
         df1 = df1[df1['description'] == selected_option]
         df1=df1.reset_index()
         st.write(df1)
+        st.text(df1[0])
         st.text(df1["description"])
 
         # st.write(df1)
