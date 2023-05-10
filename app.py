@@ -121,10 +121,10 @@ def main():
         selected_option = st.selectbox('Choose an option', optionscomment)
 
         # Show the selected option
-        st.write('Selected option:', selected_option)
+        # st.write('Selected option:', selected_option)
         df1 = df1[df1['description'] == selected_option]
         df1=df1.reset_index()
-        st.write(df1)
+        # st.write(df1)
         comment=df1['description'][0]
         st.text(comment)
         # st.text(df1["description"])
