@@ -123,6 +123,8 @@ def main():
         # Show the selected option
         st.write('Selected option:', selected_option)
         df1 = df1[df1['description'] == selected_option]
+        st.write(df1)
+        st.write(df1.index)
         st.text(df1["description"][0])
 
         # st.write(df1)
